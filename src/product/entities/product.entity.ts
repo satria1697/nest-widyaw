@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'product' })
-export class Auth {
+export class ProductEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -13,7 +13,4 @@ export class Auth {
 
   @Column()
   price: string;
-
-  @Column()
-  category: string;
 }
