@@ -53,7 +53,7 @@ export class ProductService {
     const query = this.connection
       .getRepository(ProductEntity)
       .createQueryBuilder();
-    const res = await query.getMany();
+    const res = await query.orderBy('id').getMany();
     return response(res);
   }
 
@@ -62,8 +62,8 @@ export class ProductService {
     return response(res);
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
-    const product = this.getOne(id);
+  async update(id: number, updateProductDto: UpdateProductDto) {
+    const product = await this.getOne(id);
     if (product) {
       const productEntitiy = new ProductEntity();
       productEntitiy.id = id;
