@@ -59,7 +59,10 @@ export class ProductService {
 
   async findOne(id: number) {
     const res = await this.getOne(id);
-    return response(res);
+    if (res) {
+      return response(res);
+    }
+    return response({});
   }
 
   async update(id: number, updateProductDto: UpdateProductDto) {
